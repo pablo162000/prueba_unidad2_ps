@@ -2,6 +2,7 @@ package com.uce.edu.demo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.uce.edu.demo.repository.modelo.Doctor;
 import com.uce.edu.demo.repository.modelo.Paciente;
+import com.uce.edu.demo.repository.modelo.PacienteSencillo;
 import com.uce.edu.demo.service.IDoctorService;
 import com.uce.edu.demo.service.IGestorCitaMedicaService;
 import com.uce.edu.demo.service.IPacienteService;
@@ -85,7 +87,17 @@ public class Prueba2PaP2PsApplication implements CommandLineRunner {
 		//this.iGestorCitaMedicaService.generarCita("12341", LocalDateTime.now(), new BigDecimal(40), "Inca", "155822", "1184851");
 		
 		
-		this.iGestorCitaMedicaService.actualizarCita("12341","gripe" , "paracetamol", LocalDateTime.now());
+		//this.iGestorCitaMedicaService.actualizarCita("12341","gripe" , "paracetamol", LocalDateTime.now());
+		
+		List<PacienteSencillo> lista= this.iGestorCitaMedicaService.buscar(LocalDateTime.of(1990,12,2,7,56), "F");
+		
+		for(PacienteSencillo item: lista) {
+			
+			logJava.info("Persona Sencilla : " + item);
+			
+		}
+
+		
 	}
 
 }
