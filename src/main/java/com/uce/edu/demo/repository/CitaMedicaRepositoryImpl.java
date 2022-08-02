@@ -1,10 +1,8 @@
 package com.uce.edu.demo.repository;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -24,18 +22,23 @@ public class CitaMedicaRepositoryImpl implements ICitaMedicaRepository {
 
 
 	@Override
-	public int actualizarPorNumeroCita(String numero, String diagnostico, String receta, LocalDateTime fechaControl) {
+	public void actualiza(CitaMedica citaMedica) {
 		// TODO Auto-generated method stub
-		Query myQuery = this.entityManager.createQuery(
-				"UPDATE CitaMedica c  SET c.diagnostico =:datoDiagnostico, c.receta = :datoReceta, c.fechaControl = :datofecha WHERE c.numeroTurno = :numero");
+		this.entityManager.merge(citaMedica);
+	}
 
-		myQuery.setParameter("datoDiagnostico", diagnostico);
-		myQuery.setParameter("datoReceta", receta);
-		myQuery.setParameter("datofecha", fechaControl);
-		myQuery.setParameter("numero", numero);
+
+	@Override
+	public CitaMedica buscarPorNumero(String numero) {
+		// TODO Auto-generated method stub
 		
-		return myQuery.executeUpdate();	
-		}
+		TypedQuery<CitaMedica> miQuery= this.entityManager.createQuery("select c from CitaMedica c where c.numero =:numero", CitaMedica.class)	;	
+				
+		miQuery.setParameter("numero", numero);
+		return miQuery.getSingleResult();
+	}
 
+
+	
 
 }

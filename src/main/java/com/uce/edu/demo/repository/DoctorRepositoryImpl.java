@@ -23,33 +23,33 @@ public class DoctorRepositoryImpl implements IDoctorRepository {
 	}
 
 	@Override
-	public Doctor consultar(Integer id) {
-		// TODO Auto-generated method stub
-		return this.entityManager.find(Doctor.class, id);
-	}
-
-	@Override
 	public void actualizar(Doctor doctor) {
 		// TODO Auto-generated method stub
 		this.entityManager.merge(doctor);
 	}
 
 	@Override
-	public void eliminar(Integer id) {
+	public Doctor buscarPorCedula(String cedula) {
 		// TODO Auto-generated method stub
+		TypedQuery<Doctor> myQuery = this.entityManager
+				.createQuery("SELECT d FROM Doctor d WHERE d.cedula = :datoCedula", Doctor.class);
+		myQuery.setParameter("datoCedula", cedula);
 
-		Doctor doctor = this.consultar(id);
-
-		this.entityManager.remove(doctor);
+		return myQuery.getSingleResult();
 	}
 
 	@Override
-	public Doctor consultarCedula(String cedula) {
+	public Doctor buscar(Integer codigo) {
 		// TODO Auto-generated method stub
-		TypedQuery<Doctor> jpqlTypedQuery = this.entityManager
-				.createQuery("SELECT d FROM Doctor d WHERE d.cedula = :datoCedula", Doctor.class);
-		jpqlTypedQuery.setParameter("datoCedula", cedula );
-		
-		return jpqlTypedQuery.getSingleResult();	}
+		return this.entityManager.find(Doctor.class, codigo);
+	}
+
+	@Override
+	public void eliminar(Integer codigo) {
+		// TODO Auto-generated method stub
+		Doctor doctor = this.buscar(codigo);
+		this.entityManager.remove(doctor);
+
+	}
 
 }

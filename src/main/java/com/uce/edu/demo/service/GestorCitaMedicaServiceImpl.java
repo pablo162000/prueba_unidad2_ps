@@ -30,23 +30,23 @@ public class GestorCitaMedicaServiceImpl implements IGestorCitaMedicaService{
 
 	
 	@Override
-	public void agendar(String numeroTurno, LocalDateTime fechaCita, BigDecimal costoCita, String lugarCita,
+	public void generarCita(String numeroTurno, LocalDateTime fechaCita, BigDecimal costoCita, String lugarCita,
 			String cedulaDoctor, String cedulaPaciente) {
 		// TODO Auto-generated method stub
-		
+//		
 		CitaMedica citaMedica = new CitaMedica();
-		citaMedica.setNumeroTurno(numeroTurno);
+		citaMedica.setNumero(numeroTurno);
 		citaMedica.setFechaCita(fechaCita);
-		citaMedica.setCostoCita(costoCita);
-		citaMedica.setLugarCita(lugarCita);
+		citaMedica.setValor(costoCita);
+		citaMedica.setLugar(lugarCita);
 		
-		Doctor doctor = this.iDoctorRepository.consultarCedula(cedulaDoctor);
-		Paciente paciente = this.iPacienteRepository.consultarCedula(cedulaPaciente);
+		Doctor midoctor = this.iDoctorRepository.buscarPorCedula(cedulaDoctor);
+		Paciente mipaciente = this.iPacienteRepository.buscarPorCedula(cedulaPaciente);
 		
-		citaMedica.setDoctor(doctor);
-
-		citaMedica.setPaciente(paciente);
-		
+		citaMedica.setDoctor(midoctor);
+//
+		citaMedica.setPaciente(mipaciente);
+//		
 		this.iCitaMedicaRepository.insertar(citaMedica);
 		
 	
@@ -56,11 +56,20 @@ public class GestorCitaMedicaServiceImpl implements IGestorCitaMedicaService{
 
 
 	@Override
-	public int actualizarPorNumeroCita(String numero, String diagnostico, String receta, LocalDateTime fechaControl) {
+	public void actualizarCita(String numero, String diagnostico, String receta, LocalDateTime fechaControl) {
 		// TODO Auto-generated method stub
-		return this.iCitaMedicaRepository.actualizarPorNumeroCita(numero, diagnostico, receta, fechaControl);
+		
+		CitaMedica cita = this.iCitaMedicaRepository.buscarPorNumero(numero);
+		cita.setDiagnostico(diagnostico);
+		cita.setReceta(receta);
+		cita.setFechaCita(fechaControl);
+		this.iCitaMedicaRepository.actualiza(cita);
+		
+		
 	}
-	
+
+
+
 	
 	
 

@@ -1,7 +1,5 @@
 package com.uce.edu.demo.repository;
 
-import java.time.LocalDateTime;
-
 import com.uce.edu.demo.repository.modelo.CitaMedica;
 
 public interface ICitaMedicaRepository {
@@ -9,8 +7,9 @@ public interface ICitaMedicaRepository {
 
 	public void insertar(CitaMedica citaMedica);
 	
-	public int actualizarPorNumeroCita(String numero, String diagnostico, String receta, LocalDateTime fechaControl);
+	public void actualiza(CitaMedica citaMedica);
 
 
+	public CitaMedica buscarPorNumero(String numero) ;
 	
 }

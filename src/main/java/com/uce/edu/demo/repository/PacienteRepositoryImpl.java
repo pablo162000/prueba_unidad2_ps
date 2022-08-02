@@ -2,29 +2,24 @@ package com.uce.edu.demo.repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
 import com.uce.edu.demo.repository.modelo.Paciente;
+
 @Repository
 @Transactional
 public class PacienteRepositoryImpl implements IPacienteRepository {
 
-	
 	@PersistenceContext
 	private EntityManager entityManager;
+
 	@Override
 	public void insertar(Paciente paciente) {
 		// TODO Auto-generated method stub
 		this.entityManager.persist(paciente);
-	}
-
-	@Override
-	public Paciente consultar(Integer id) {
-		// TODO Auto-generated method stub
-		return this.entityManager.find(Paciente.class, id);
 	}
 
 	@Override
@@ -36,16 +31,24 @@ public class PacienteRepositoryImpl implements IPacienteRepository {
 	@Override
 	public void eliminar(Integer id) {
 		// TODO Auto-generated method stub
-		Paciente paciente =this.consultar(id);
+		Paciente paciente = this.buscar(id);
 		this.entityManager.remove(paciente);
 	}
 
 	@Override
-	public Paciente consultarCedula(String cedula) {
+	public Paciente buscarPorCedula(String cedula) {
 		// TODO Auto-generated method stub
-		Query jpqlQuery = this.entityManager.createQuery("SELECT p FROM Paciente p WHERE p.cedula = :datoCedula");
-		jpqlQuery.setParameter("datoCedula", cedula);
+		TypedQuery<Paciente> myQuery = this.entityManager
+				.createQuery("SELECT p FROM Paciente p WHERE p.cedula = :datoCedula", Paciente.class);
+		myQuery.setParameter("datoCedula", cedula);
 
-		return (Paciente) jpqlQuery.getSingleResult();	}
+		return myQuery.getSingleResult();
+	}
+
+	@Override
+	public Paciente buscar(Integer codigo) {
+		// TODO Auto-generated method stub
+		return this.entityManager.find(Paciente.class, codigo);
+	}
 
 }

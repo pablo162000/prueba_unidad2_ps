@@ -7,7 +7,7 @@ public interface IPacienteService {
 	
 	public void insertar(Paciente paciente);
 
-	public Paciente consultar(Integer id);
+	public Paciente buscar(Integer id);
 
 	public void actualizar(Paciente paciente);
 

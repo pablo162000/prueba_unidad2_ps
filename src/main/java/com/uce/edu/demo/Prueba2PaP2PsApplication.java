@@ -37,55 +37,55 @@ public class Prueba2PaP2PsApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-		Doctor doctor = new Doctor();
-		doctor.setApellido("Suntaxi");
-		doctor.setNombre("Pablo");
-		doctor.setCedula("1518189");
-		doctor.setFechaNacimiento(LocalDateTime.now());
-		doctor.setNumeroConsultorio("5");
-		doctor.setSalario(new BigDecimal(1000));
-		doctor.setTitulo("Pediatra");
+//		Doctor doc1 = new Doctor();
+//		doc1.setNombre("Edison");
+//		doc1.setApellido("Cayambe");
+//		doc1.setCedula("123123");
+//		doc1.setFechaNacimiento(LocalDateTime.now());
+//		doc1.setNumeroConsultorio("A234");
+//		doc1.setCodigoSenescyt("1414151");
+//		doc1.setGenero("M");
+//		this.iDoctorService.insertar(doc1);
+////		
+//		Doctor doc2 = new Doctor();
+//		doc2.setNombre("Juan");
+//		doc2.setApellido("Cayambe");
+//		doc2.setCedula("155822");
+//		doc2.setFechaNacimiento(LocalDateTime.now());
+//		doc2.setNumeroConsultorio("A235");
+//		doc2.setCodigoSenescyt("185952");
+//		doc2.setGenero("M");
+//		
+//		this.iDoctorService.insertar(doc2);
+////		
+////		Paciente paci1 = new Paciente();
+////		paci1.setNombre("Daniel");
+////		paci1.setApellido("Teran");
+////		paci1.setCedula("134533");
+////		paci1.setFechaNacimiento(LocalDateTime.of(1990,12,2,8,56));
+////		paci1.setCodigoSeguro("25584899");
+////		paci1.setEstatura(new  Double("170"));
+////		paci1.setPeso(new Double("101"));
+////		paci1.setGenero("M");
+////		
+////		this.iPacienteService.insertar(paci1);
+////		
+//		Paciente paci2 = new Paciente();
+//		paci2.setNombre("Daniel1");
+//		paci2.setApellido("Teran");
+//		paci2.setCedula("1184851");
+//		paci2.setFechaNacimiento(LocalDateTime.of(1990,12,2,8,56));
+//		paci2.setCodigoSeguro("258948485");
+//		paci2.setEstatura(new  Double("170"));
+//		paci2.setPeso(new Double("101"));
+//		paci2.setGenero("F");
+//		
+//		this.iPacienteService.insertar(paci2);
 
-		//this.iDoctorService.insertar(doctor);
-		Doctor doctor1 = new Doctor();
-		doctor1.setApellido("Pozpo");
-		doctor1.setNombre("Carlos");
-		doctor1.setCedula("881885");
-		doctor1.setFechaNacimiento(LocalDateTime.now());
-		doctor1.setNumeroConsultorio("6");
-		doctor1.setSalario(new BigDecimal(1000));
-		doctor1.setTitulo("Neurologo");
-
-		//this.iDoctorService.insertar(doctor1);
-
-		Paciente paciente = new Paciente();
-		paciente.setApellido("Mera");
-		paciente.setCedula("487195");
-		paciente.setNombre("Ramiro");
-		paciente.setCodigoIess("1824p");
-		paciente.setEstatura("1.75m");
-		paciente.setFechaNacimiento(LocalDateTime.now());
-		paciente.setGenero("M");
-		paciente.setPeso("80kg");
-
-		//this.iPacienteService.insertar(paciente);
-		Paciente paciente1 = new Paciente();
-		paciente1.setApellido("Ramos");
-		paciente1.setCedula("71889");
-		paciente1.setNombre("Pepe");
-		paciente1.setCodigoIess("8189154");
-		paciente1.setEstatura("1.75m");
-		paciente1.setFechaNacimiento(LocalDateTime.now());
-		paciente1.setGenero("M");
-		paciente1.setPeso("80kg");
-
-		//this.iPacienteService.insertar(paciente1);
-		//this.iPacienteService.insertar(null);
+		//this.iGestorCitaMedicaService.generarCita("12341", LocalDateTime.now(), new BigDecimal(40), "Inca", "155822", "1184851");
 		
-		//iGestorCitaMedicaService.agendar("1", LocalDateTime.now(), new BigDecimal(15), "La ofelia", doctor.getCedula(), paciente.getCedula());
 		
-		this.iGestorCitaMedicaService.actualizarPorNumeroCita("1", "nada", "pastilla", LocalDateTime.now());
-
+		this.iGestorCitaMedicaService.actualizarCita("12341","gripe" , "paracetamol", LocalDateTime.now());
 	}
 
 }

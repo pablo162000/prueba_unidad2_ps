@@ -19,9 +19,9 @@ public class PacienteServiceImpl implements IPacienteService {
 	}
 
 	@Override
-	public Paciente consultar(Integer id) {
+	public Paciente buscar(Integer id) {
 		// TODO Auto-generated method stub
-		return this.iPacienteRepository.consultar(id);
+		return this.iPacienteRepository.buscar(id);
 	}
 
 	@Override

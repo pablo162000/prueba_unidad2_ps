@@ -11,6 +11,7 @@ public class DoctorServiceImpl implements IDoctorService {
 	
 	@Autowired
 	private IDoctorRepository iDoctorRepository;
+	
 	@Override
 	public void insertar(Doctor doctor) {
 		// TODO Auto-generated method stub
@@ -18,9 +19,9 @@ public class DoctorServiceImpl implements IDoctorService {
 	}
 
 	@Override
-	public Doctor consultar(Integer id) {
+	public Doctor buscar(Integer id) {
 		// TODO Auto-generated method stub
-		return this.iDoctorRepository.consultar(id);
+		return this.iDoctorRepository.buscar(id);
 	}
 
 	@Override

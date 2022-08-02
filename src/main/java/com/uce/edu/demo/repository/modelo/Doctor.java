@@ -1,6 +1,5 @@
 package com.uce.edu.demo.repository.modelo;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -18,8 +17,8 @@ import javax.persistence.Table;
 public class Doctor {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "doct_id_seq")
-	@SequenceGenerator(name = "doct_id_seq", sequenceName = "doct_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "doct_id_sequence")
+    @SequenceGenerator(name = "doct_id_sequence", sequenceName = "doct_id_sequence", allocationSize = 1)
 	@Column(name = "doct_id")
 	private Integer id;
 
@@ -38,16 +37,17 @@ public class Doctor {
 	@Column(name = "doct_numero_consultorio")
 	private String numeroConsultorio;
 
-	@Column(name = "doct_titulo")
-	private String titulo;
+	@Column(name = "doct_codigo_senescyt")
+	private String codigoSenescyt;
 
-	@Column(name = "doct_salario")
-	private BigDecimal salario;
+	@Column(name = "doct_genero")
+	private String genero;
 
 	@OneToMany(mappedBy = "doctor")
-	private List<CitaMedica> citasMedicas;
+	private List<CitaMedica> citas;
 	
 	//GET Y SET
+
 
 	public Integer getId() {
 		return id;
@@ -97,30 +97,31 @@ public class Doctor {
 		this.numeroConsultorio = numeroConsultorio;
 	}
 
-	public String getTitulo() {
-		return titulo;
+	public String getCodigoSenescyt() {
+		return codigoSenescyt;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setCodigoSenescyt(String codigoSenescyt) {
+		this.codigoSenescyt = codigoSenescyt;
 	}
 
-	public BigDecimal getSalario() {
-		return salario;
+	public String getGenero() {
+		return genero;
 	}
 
-	public void setSalario(BigDecimal salario) {
-		this.salario = salario;
+	public void setGenero(String genero) {
+		this.genero = genero;
 	}
 
-	public List<CitaMedica> getCitasMedicas() {
-		return citasMedicas;
+	public List<CitaMedica> getCitas() {
+		return citas;
 	}
 
-	public void setCitasMedicas(List<CitaMedica> citasMedicas) {
-		this.citasMedicas = citasMedicas;
+	public void setCitas(List<CitaMedica> citas) {
+		this.citas = citas;
 	}
 	
+
 	
 
 }

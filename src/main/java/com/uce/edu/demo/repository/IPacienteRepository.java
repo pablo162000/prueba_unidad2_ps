@@ -6,13 +6,13 @@ public interface IPacienteRepository {
 
 	public void insertar(Paciente paciente);
 
-	public Paciente consultar(Integer id);
+	public Paciente buscar(Integer codigo);
 	
-	public Paciente consultarCedula(String cedula);
+	public Paciente buscarPorCedula(String cedula);
 
 
 	public void actualizar(Paciente paciente);
 
-	public void eliminar(Integer id);
+	public void eliminar(Integer codigo);
 
 }

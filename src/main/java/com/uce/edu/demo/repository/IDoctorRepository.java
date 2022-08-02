@@ -6,12 +6,12 @@ public interface IDoctorRepository {
 
 	public void insertar(Doctor doctor);
 
-	public Doctor consultar(Integer id);
-	public Doctor consultarCedula(String cedula);
+	public Doctor buscar(Integer codigo);
+	public Doctor buscarPorCedula(String cedula);
 
 
 	public void actualizar(Doctor doctor);
 
-	public void eliminar(Integer id);
+	public void eliminar(Integer codigo);
 
 }

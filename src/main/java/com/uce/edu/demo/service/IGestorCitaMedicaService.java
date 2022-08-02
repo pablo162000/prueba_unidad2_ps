@@ -5,10 +5,10 @@ import java.time.LocalDateTime;
 
 public interface IGestorCitaMedicaService {
 	
-	public void agendar(String numeroTurno, LocalDateTime fechaCita, BigDecimal costoCita, String lugarCita,
+	public void generarCita(String numeroTurno, LocalDateTime fechaCita, BigDecimal costoCita, String lugarCita,
 			String cedulaDoctor, String cedulaPaciente);
 	
-	public int actualizarPorNumeroCita(String numero, String diagnostico, String receta, LocalDateTime fechaControl);
+	public void actualizarCita(String numero, String diagnostico, String receta, LocalDateTime fechaControl);
 
 
 }

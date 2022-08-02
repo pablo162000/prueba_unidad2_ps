@@ -6,7 +6,7 @@ public interface IDoctorService {
 	
 	public void insertar(Doctor doctor);
 
-	public Doctor consultar(Integer id);
+	public Doctor buscar(Integer id);
 
 	public void actualizar(Doctor doctor);
 
